@@ -1,8 +1,8 @@
 #Sets up default LEMP Stack on Ubuntu (14.04x64) with Nginx, MySql 5.5, PHP-FPM 5.5
 #CONFIGURATION
-MYSQLPASS="Sreedhar.098Mysql"
-MYSQLDATABASE="word_data"
-SERVERNAMEORIP="142.93.189.95"
+MYSQLPASS="password"
+MYSQLDATABASE="database"
+SERVERNAMEORIP="IP"
 
 #update everything
 apt-get update
