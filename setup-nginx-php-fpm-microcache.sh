@@ -13,13 +13,13 @@ sudo debconf-set-selections <<< "mysql-server mysql-server/root_password passwor
 sudo debconf-set-selections <<< "mysql-server mysql-server/root_password_again password ${MYSQLPASS}"
 sudo apt-get -y install mysql-server mysql-client
 
-apt-get install -y php7-mysql php7-fpm php7-gd php7-cli
+apt-get install -y php-mysql php-fpm php-gd php-cli
 
 #configure phpfpm settings
-sed -i "s/^;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/" /etc/php7/fpm/php.ini
-sed -i "s/^;listen.owner = www-data/listen.owner = www-data/" /etc/php7/fpm/pool.d/www.conf
-sed -i "s/^;listen.group = www-data/listen.group = www-data/" /etc/php7/fpm/pool.d/www.conf
-sed -i "s/^;listen.mode = 0660/listen.mode = 0660/" /etc/php7/fpm/pool.d/www.conf
+sed -i "s/^;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/" /etc/php/7.0/fpm/php.ini
+sed -i "s/^;listen.owner = www-data/listen.owner = www-data/" /etc/php/7.0/fpm/pool.d/www.conf
+sed -i "s/^;listen.group = www-data/listen.group = www-data/" /etc/php/7.0/fpm/pool.d/www.conf
+sed -i "s/^;listen.mode = 0660/listen.mode = 0660/" /etc/php/7.0/fpm/pool.d/www.conf
 
 
 
@@ -40,7 +40,7 @@ sed -i "s/^\tlocation \/ {/\n\tlocation ~ \\\.php$ {\n\t\ttry_files \$uri =404;\
 #just restarting to make sure they have latest
 service nginx restart
 service mysql restart
-service php7-fpm restart
+service php7.0-fpm restart
 
 ##create MySql Database
 mysql -uroot -p$MYSQLPASS -e "create database ${MYSQLDATABASE}"
